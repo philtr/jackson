@@ -33,8 +33,13 @@ gem 'omniauth-github', '~> 1.1.0'
 
 gem 'unicorn'
 
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+group :development, :test do
+  gem 'pry-rails'
+  gem 'shoulda-context'
+  gem 'shoulda-matchers'
+  gem 'factory_girl_rails'
+  gem 'simplecov'
+  gem 'mocha', require: false
+  gem 'turn'
 end
 

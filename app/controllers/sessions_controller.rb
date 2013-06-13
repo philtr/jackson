@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 
   # GET /auth/:provider/callback?param=a98xh0xeui2sc
   def create
-    @user = User.find_or_create_from_auth(auth)
+    @user = User.authorize(auth)
     login_as(@user)
 
     redirect_to params[:return_path].presence || root_path
