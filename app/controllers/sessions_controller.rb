@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     @current_user = nil
 
-    redirect_to params[:return_path].presence || root_path
+    redirect_to session[:return_path].presence || root_path
+    session.delete(:return_path)
   end
 
   # GET /auth/:provider/callback?param=a98xh0xeui2sc
@@ -16,7 +17,8 @@ class SessionsController < ApplicationController
     @user = User.authorize(auth)
     login_as(@user)
 
-    redirect_to params[:return_path].presence || root_path
+    redirect_to session[:return_path].presence || root_path
+    session.delete(:return_path)
   end
 
 

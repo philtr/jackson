@@ -22,7 +22,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_authentication
-    redirect_to sign_in_path unless current_user?
+    unless current_user?
+      session[:return_path] = request.fullpath
+      redirect_to sign_in_path and return
+    end
   end
 
   def login_as(user)

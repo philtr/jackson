@@ -7,8 +7,8 @@ require 'mocha/setup'
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!
+  include FactoryGirl::Syntax::Methods
 
   fixtures :all
 
-  include FactoryGirl::Syntax::Methods
 end

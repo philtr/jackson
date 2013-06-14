@@ -1,0 +1,15 @@
+= form_for @response, html: { class: 'pure-form pure-form-aligned' } do |f|
+  = f.hidden_field :event_id
+  = f.hidden_field :organization
+
+  %fieldset
+    .pure-control-group
+      = f.label :additional_guests, class: 'control-label'
+      = f.select :additional_guests, (0..10).to_a
+
+    .pure-control-group
+      = f.label :comments, class: 'control-label'
+      = f.text_area :comments
+
+    .pure-controls
+      = f.button type: 'submit', class: 'pure-button pure-button-primary'
