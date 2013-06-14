@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :auth_path, :current_user, :current_user?
 
+  before_filter :external_css
+
   protected
 
   def auth_path(provider = :github)
@@ -19,6 +21,12 @@ class ApplicationController < ActionController::Base
 
   def current_user?
     current_user.present?
+  end
+
+  def external_css
+    if params[:css]
+      session[:css_url] = params[:css]
+    end
   end
 
   def require_authentication
