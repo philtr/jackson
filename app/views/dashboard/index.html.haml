@@ -1,14 +1,13 @@
 = link_to "Create an Event", new_event_path, class: "btn btn-success"
 
-- if @created_events.any?
-  %h3 My Created Events
-  %ul
-    - @created_events.each do |event|
-      %li= event.inspect
-
 - if @events.any?
-  %h3 Upcoming Events
-  %ul
-    - @events.each do |event|
-      %li= event.inspect
+  %h3 My Upcoming Events
+  - @events.each do |event|
+    .panel.panel-default
+      .panel-heading
+        %h3.panel-title
+          = link_to event_path(event) do
+            = event.name
+            %small= event.starts_at.to_s(:long)
+      .panel-body= markdownify(event.description)
 

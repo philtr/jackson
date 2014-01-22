@@ -3,6 +3,5 @@ class DashboardController < ApplicationController
 
   def index
     @events = current_user.events.upcoming.limit(5)
-    @created_events = current_user.events.upcoming.limit(5)
   end
 end

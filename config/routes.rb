@@ -12,5 +12,9 @@ Jackson::Application.routes.draw do
 
   get '/rsvp', to: 'responses#new', as: 'new_response'
 
-  root to: 'dashboard#index'
+  get '/dashboard', to: 'dashboard#index', as: 'dashboard'
+
+  get '/home', to: 'base#home', as: 'home'
+
+  root to: 'base#home'
 end

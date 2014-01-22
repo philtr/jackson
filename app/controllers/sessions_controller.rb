@@ -18,8 +18,7 @@ class SessionsController < ApplicationController
     @user = User.authorize(auth)
     sign_in_as(@user)
 
-    redirect_to session[:return_path].presence || root_path
-    session.delete(:return_path)
+    redirect_to session.delete(:return_path).presence || dashboard_path
   end
 
   protected

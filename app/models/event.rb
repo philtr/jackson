@@ -4,5 +4,10 @@ class Event < ActiveRecord::Base
 
   belongs_to :creator, class_name: "User", foreign_key: :created_by
 
-  scope :upcoming, -> { where("starts_at > ?", Time.current) }
+  scope :upcoming, -> { where("starts_at > ?", Time.current).order(starts_at: :asc) }
+
+
+  def to_param
+    "#{ id }-#{ name.parameterize }"
+  end
 end
