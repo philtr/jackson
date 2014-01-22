@@ -18,6 +18,11 @@ class ResponsesController < ApplicationController
     @response.user_id = current_user.id
 
     if @response.save
+      if session[:parent_url]
+        redirect_to session.delete(:parent_url)
+        return
+      end
+
       redirect_to responses_path
     end
   end

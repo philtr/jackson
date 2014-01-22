@@ -19,5 +19,9 @@ module Jackson
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    #
+
+    # Allow other sites to IFRAME this one
+    config.action_dispatch.default_headers.delete("X-Frame-Options")
   end
 end

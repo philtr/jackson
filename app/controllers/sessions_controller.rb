@@ -15,9 +15,9 @@ class SessionsController < ApplicationController
   # GET /auth/:provider/callback?param=a98xh0xeui2sc
   def create
     @user = User.authorize(auth)
-    login_as(@user)
+    sign_in_as(@user)
 
-    redirect_to session[:return_path].presence || root_path
+    redirect_to session[:parent_url].presence || session[:return_path].presence || root_path
     session.delete(:return_path)
   end
 

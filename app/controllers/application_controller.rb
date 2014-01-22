@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :auth_path, :current_user, :current_user?
 
-  before_filter :external_css
+  before_filter :set_external_css, :set_parent_url
 
   protected
 
@@ -23,12 +23,6 @@ class ApplicationController < ActionController::Base
     current_user.present?
   end
 
-  def external_css
-    if params[:css]
-      session[:css_url] = params[:css]
-    end
-  end
-
   def require_authentication
     unless current_user?
       session[:return_path] = request.fullpath
@@ -36,8 +30,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def login_as(user)
+  def set_external_css
+    if params[:css]
+      session[:css_url] = params[:css]
+    end
+  end
+
+  def set_parent_url
+    session[:parent_url] = params[:url]
+  end
+
+  def sign_in_as(user)
     session[:user_id] = user.id
     @current_user = user
   end
+
 end
