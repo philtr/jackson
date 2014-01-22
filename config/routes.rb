@@ -1,6 +1,6 @@
 Jackson::Application.routes.draw do
 
-  get '/sign-in',   to: 'sessions#new',     as: 'sign_in'
+  get '/sign-in',   to: 'sessions#new',      as: 'sign_in'
   get '/sign-out',  to: 'sessions#destroy',  as: 'sign_out'
 
   scope :auth do
@@ -12,5 +12,5 @@ Jackson::Application.routes.draw do
 
   get '/rsvp', to: 'responses#new', as: 'new_response'
 
-  root to: 'responses#index'
+  root to: 'dashboard#index'
 end

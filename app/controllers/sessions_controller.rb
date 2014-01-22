@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   # GET /sign-in
   def new
+    redirect_to auth_path
   end
 
   # GET /sign-out
@@ -17,10 +18,9 @@ class SessionsController < ApplicationController
     @user = User.authorize(auth)
     sign_in_as(@user)
 
-    redirect_to session[:parent_url].presence || session[:return_path].presence || root_path
+    redirect_to session[:return_path].presence || root_path
     session.delete(:return_path)
   end
-
 
   protected
 

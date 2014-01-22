@@ -11,21 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130613230456) do
+ActiveRecord::Schema.define(version: 20140122034133) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
+  create_table "events", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.string   "location"
+    t.integer  "created_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "responses", force: true do |t|
     t.integer  "user_id"
-    t.string   "event_id"
     t.string   "organization"
     t.integer  "additional_guests"
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "event_id"
   end
+
+  add_index "responses", ["event_id"], name: "index_responses_on_event_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "provider"

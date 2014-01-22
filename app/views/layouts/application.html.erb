@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Jackson</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= stylesheet_link_tag 'http://yui.yahooapis.com/pure/0.2.0/pure-min.css' %>
-  <%= stylesheet_link_tag sanitize(session[:css_url]) %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<%= yield %>
+    <title>Jackson</title>
+    <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= stylesheet_link_tag '//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css' %>
+    <%= csrf_meta_tags %>
+  </head>
 
-</body>
+  <body>
+    <div class="container">
+      <%= render "shared/header" %>
+      <%= yield %>
+    </div>
+  </body>
 </html>

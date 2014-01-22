@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :auth_path, :current_user, :current_user?
 
-  before_filter :set_external_css, :set_parent_url
-
   protected
 
   def auth_path(provider = :github)
@@ -28,16 +26,6 @@ class ApplicationController < ActionController::Base
       session[:return_path] = request.fullpath
       redirect_to sign_in_path and return
     end
-  end
-
-  def set_external_css
-    if params[:css]
-      session[:css_url] = params[:css]
-    end
-  end
-
-  def set_parent_url
-    session[:parent_url] = params[:url]
   end
 
   def sign_in_as(user)

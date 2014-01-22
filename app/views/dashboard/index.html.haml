@@ -1,0 +1,11 @@
+- if @created_events.any?
+  %h3 My Created Events
+  %ul
+    - @created_events.each do |event|
+      %li= event.inspect
+
+%h3 Upcoming Events
+%ul
+  - @events.each do |event|
+    %li= event.inspect
+
