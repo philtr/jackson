@@ -7,8 +7,8 @@ Jackson::Application.routes.draw do
     get ':provider/callback', to: 'sessions#create'
   end
 
-  resources :responses, except: [ :new, :edit ] do
-  end
+  resources :events
+  resources :responses, except: [ :new, :edit ]
 
   get '/rsvp', to: 'responses#new', as: 'new_response'
 

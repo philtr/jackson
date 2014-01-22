@@ -1,0 +1,25 @@
+%h3 New Event
+
+= form_for @event do |f|
+
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label :description
+    = f.text_area :description, rows: 4, class: "form-control"
+
+  .form-group
+    = f.label :starts_at
+    = f.datetime_select :starts_at, class: "form-control"
+
+  .form-group
+    = f.label :ends_at
+    = f.datetime_select :ends_at, class: "form-control"
+
+  .form-group
+    = f.label :location
+    = f.text_field :location, class: "form-control"
+
+  = f.submit nil, class: "btn btn-primary"
