@@ -6,6 +6,10 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, -> { where("starts_at > ?", Time.current).order(starts_at: :asc) }
 
+  def attending
+    responses.count + responses.inject(0) { |sum, response| sum + response.additional_guests }
+  end
+
   def response_for(user)
     responses.where(user_id: user.id).first
   end
