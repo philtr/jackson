@@ -17,17 +17,18 @@
         %h4 Attending
     .row
       - @event.responses.each do |resp|
-        .col-md-4
+        .col-sm-2.col-xs-3
           .thumbnail
             = image_tag resp.user.gravatar
             .caption
-              %h3
+              %b
                 = resp.user.first_name
                 = resp.user.last_name
                 - if resp.additional_guests > 0
                   %span.label.label-danger +#{ resp.additional_guests }
               - if resp.comments.present?
-                %p= markdownify(resp.comments)
+                %a{ data: { toggle: "popover" , content: markdownify(resp.comments).html_safe } }
+                  %i.fa.fa-comments
 
   .col-md-3
     %ul.nav
