@@ -17,7 +17,6 @@ gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'maruku'
 gem 'sass-rails', '~> 4.0.1'
-gem 'turbolinks'
 gem 'uglifier', '>= 2.4.0'
 gem 'unicorn'
 

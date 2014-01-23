@@ -165,8 +165,6 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    turbolinks (2.2.0)
-      coffee-rails
     turn (0.9.6)
       ansi
     tzinfo (0.3.38)
@@ -202,7 +200,6 @@ DEPENDENCIES
   shoulda-context
   shoulda-matchers
   simplecov
-  turbolinks
   turn
   uglifier (>= 2.4.0)
   unicorn
