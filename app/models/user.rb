@@ -10,12 +10,7 @@ class User < ActiveRecord::Base
   def gravatar(size = 500)
     "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email.downcase) }?s=#{ size }"
   rescue
-    [
-      "http://placekitten.com/#{ size }/#{ size }",
-      "http://www.avatarpro.biz/avatar?s=#{ size }",
-      "http://placedog.com/#{ size }/#{ size }",
-      "http://lorempixel.com/#{ size }/#{ size }",
-    ].sample
+    avatar_url.presence || random_avatar
   end
 
   def self.authorize(auth)
@@ -23,10 +18,22 @@ class User < ActiveRecord::Base
       user.first_name ||= auth.info.first_name.presence  || auth.info.name.split(' ').first
       user.last_name  ||= auth.info.last_name.presence   || auth.info.name.split(' ').last
       user.email      ||= auth.info.email
+      user.avatar_url ||= auth.info.image
 
       user.token      ||= auth.credentials.token
 
       user.auth_hash    = auth.to_h
     end
+  end
+
+  protected
+
+  def random_avatar(size = 500)
+    [
+      "http://placekitten.com/#{ size }/#{ size }",
+      "http://www.avatarpro.biz/avatar?s=#{ size }",
+      "http://placedog.com/#{ size }/#{ size }",
+      "http://lorempixel.com/#{ size }/#{ size }",
+    ].sample
   end
 end
