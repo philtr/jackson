@@ -9,8 +9,11 @@ Jackson::Application.routes.draw do
 
   resources :events do
     resources :responses, only: [ :create, :update, :destroy ]
-  end
 
+    member do
+      get :responses
+    end
+  end
 
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 

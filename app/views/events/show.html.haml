@@ -27,11 +27,11 @@
                 - if resp.additional_guests > 0
                   %span.label.label-danger +#{ resp.additional_guests }
               - if resp.comments.present?
-                %p= resp.comments
+                %p= markdownify(resp.comments)
 
   .col-md-3
     %ul.nav
-      - if current_user.attending?(@event)
+      - if current_user? && current_user.attending?(@event)
         %li= link_to "I can't go", event_response_path(@event, @response), class: "btn btn-danger", method: :delete
         %li
           = form_for @response, url: event_response_path(@event, @response) do |f|
