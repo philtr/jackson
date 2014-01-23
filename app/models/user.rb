@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 
   def gravatar(size = 500)
     "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email.downcase) }?s=#{ size }"
+  rescue
+    "http://placekitten.com/#{ size }/#{ size }"
   end
 
   def self.authorize(auth)
