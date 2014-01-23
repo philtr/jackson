@@ -29,3 +29,6 @@ group :development, :test do
   gem 'turn'
 end
 
+group :production do
+  gem 'rails_12factor'
+end
