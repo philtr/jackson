@@ -12,8 +12,13 @@
             - else
               %span.label.label-primary Attending
             = event.name
-            %small= event.starts_at.to_s(:long)
-      .panel-body= markdownify(event.description)
+      .panel-body
+        %p
+          %small= event.starts_at.to_s(:long)
+        %p
+          = markdownify(event.description)
       %ul.list-group
-        %li.list-group-item= event.location
+        %li.list-group-item
+          %span.fa.fa-map-marker.fa-2x
+          = google_maps_link(event.location)
 

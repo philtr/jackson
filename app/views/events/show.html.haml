@@ -8,7 +8,7 @@
       = @event.starts_at.to_s(:long)
     %p
       %span.fa.fa-map-marker.fa-2x
-      = @event.location
+      = google_maps_link(@event.location)
     %p= markdownify(@event.description)
 
 
