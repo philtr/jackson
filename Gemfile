@@ -6,7 +6,9 @@ gem 'rails', '4.0.2'
 gem 'pg'
 
 gem 'omniauth', '~> 1.2.1'
+gem 'omniauth-facebook', '~> 1.6.0'
 gem 'omniauth-github', '~> 1.1.1'
+gem 'omniauth-twitter', '~> 1.0.1'
 
 gem 'coffee-rails', '~> 4.0.1'
 gem 'dotenv-rails', '~> 0.9.0'
