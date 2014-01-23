@@ -7,7 +7,13 @@
       .panel-heading
         %h3.panel-title
           = link_to event_path(event) do
+            - if event.creator == current_user
+              %span.label.label-success Organizing
+            - else
+              %span.label.label-primary Attending
             = event.name
             %small= event.starts_at.to_s(:long)
       .panel-body= markdownify(event.description)
+      %ul.list-group
+        %li.list-group-item= event.location
 

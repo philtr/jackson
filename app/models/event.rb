@@ -6,6 +6,9 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, -> { where("starts_at > ?", Time.current).order(starts_at: :asc) }
 
+  def response_for(user)
+    responses.where(user_id: user.id).first
+  end
 
   def to_param
     "#{ id }-#{ name.parameterize }"

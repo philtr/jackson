@@ -1,13 +1,48 @@
 .row
   .col-md-9
-    %h3
+    %h1
       = @event.name
-      %small= @event.starts_at.to_s(:long)
 
-    %p= @event.location
+    %p
+      %span.fa.fa-clock-o.fa-2x
+      = @event.starts_at.to_s(:long)
+    %p
+      %span.fa.fa-map-marker.fa-2x
+      = @event.location
     %p= markdownify(@event.description)
 
+
+    .row
+      .col-md-12
+        %h4 Attending
+    .row
+      - @event.responses.each do |resp|
+        .col-md-4
+          .thumbnail
+            = image_tag resp.user.gravatar
+            .caption
+              %h3
+                = resp.user.first_name
+                = resp.user.last_name
+                - if resp.additional_guests > 0
+                  %span.label.label-danger +#{ resp.additional_guests }
+              - if resp.comments.present?
+                %p= resp.comments
+
   .col-md-3
-    %ul.nav.nav-pills.nav-stacked
-      %li= link_to "Count me in", "#", class: "btn btn-default"
+    %ul.nav
+      - if current_user.attending?(@event)
+        %li= link_to "I can't go", event_response_path(@event, @response), class: "btn btn-danger", method: :delete
+        %li
+          = form_for @response, url: event_response_path(@event, @response) do |f|
+            .form-group
+              = f.label :comments
+              = f.text_area :comments, placeholder: "Comments", rows: 6, class: "form-control"
+            .form-group
+              = f.label :additional_guests
+              = f.select :additional_guests, (0..10).to_a, {}, class: "form-control"
+
+            = f.submit nil, class: "btn btn-success"
+      - else
+        %li= link_to "Count me in", event_responses_path(@event), class: "btn btn-primary", method: :post
 

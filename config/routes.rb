@@ -7,10 +7,10 @@ Jackson::Application.routes.draw do
     get ':provider/callback', to: 'sessions#create'
   end
 
-  resources :events
-  resources :responses, except: [ :new, :edit ]
+  resources :events do
+    resources :responses, only: [ :create, :update, :destroy ]
+  end
 
-  get '/rsvp', to: 'responses#new', as: 'new_response'
 
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
 
