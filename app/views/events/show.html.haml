@@ -33,7 +33,7 @@
   .col-md-3
     %ul.nav
       - if current_user? && current_user.attending?(@event)
-        %li= link_to "I can't go", event_response_path(@event, @response), class: "btn btn-danger", method: :delete
+        %li= link_to "Bow out gracefully", event_response_path(@event, @response), class: "btn btn-danger", method: :delete
         %li
           = form_for @response, url: event_response_path(@event, @response) do |f|
             .form-group
@@ -45,5 +45,5 @@
 
             = f.submit nil, class: "btn btn-success"
       - else
-        %li= link_to "Count me in", event_responses_path(@event), class: "btn btn-primary", method: :post
+        %li= link_to "I'll be there!", event_responses_path(@event), class: "btn btn-primary", method: :post
 
