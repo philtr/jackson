@@ -1,9 +1,13 @@
 ENV["RAILS_ENV"] ||= "test"
 
-if ENV["TRAVIS"]
-  require 'coveralls'
-  Coveralls.wear!('rails')
-end
+require 'simplecov'
+require 'coveralls'
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  SimpleCov::Formatter::HTMLFormatter,
+  Coveralls::SimpleCov::Formatter
+]
+SimpleCov.start('rails')
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
