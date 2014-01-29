@@ -17,9 +17,9 @@
         %h4 #{ @event.attending } Attending
     .row
       - @event.responses.each do |resp|
-        .col-sm-2.col-xs-3
+        .col-sm-2.col-xs-4
           .thumbnail
-            = image_tag resp.user.gravatar
+            = image_tag resp.user.gravatar, style: "width: 100%"
             .caption
               %b
                 = resp.user.first_name
