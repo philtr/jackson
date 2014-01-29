@@ -23,12 +23,12 @@ gem 'uglifier', '>= 2.4.0'
 gem 'unicorn'
 
 group :development, :test do
-  gem 'pry-rails'
+  gem 'coveralls', require: false
   gem 'shoulda-context'
   gem 'shoulda-matchers'
   gem 'factory_girl_rails'
-  gem 'simplecov'
   gem 'mocha', require: false
+  gem 'pry-rails'
   gem 'turn'
 end
 
