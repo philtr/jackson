@@ -1,7 +1,8 @@
-.navbar.navbar-default
-  .navbar-header
-    = link_to "Jackson", root_path, class: "navbar-brand"
+.navbar.navbar-default{ style: "border-radius: 0" }
+  .container
+    .navbar-header
+      = link_to "Jackson", root_path, class: "navbar-brand"
 
-  .navbar-right
-    %ul.nav.navbar-nav
-      = render "shared/current_user"
+    .navbar-right
+      %ul.nav.navbar-nav
+        = render "shared/current_user"
