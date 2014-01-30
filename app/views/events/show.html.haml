@@ -20,6 +20,8 @@
         .col-sm-2.col-xs-4
           .thumbnail
             = image_tag resp.user.gravatar, style: "width: 100%"
+            - if @event.creator == resp.user
+              %span.label.label-default Organizer
             .caption
               %b
                 = resp.user.first_name
@@ -45,5 +47,5 @@
 
             = f.submit nil, class: "btn btn-success"
       - else
-        %li= link_to "I'll be there!", event_responses_path(@event), class: "btn btn-primary", method: :post
+        %li= link_to "I'll be there!", event_responses_path(@event), class: "btn btn-default", method: :post
 
