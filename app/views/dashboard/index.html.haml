@@ -1,24 +1,12 @@
-= link_to "Create an Event", new_event_path, class: "btn btn-success"
+.pull-right
+  = link_to "Create an Event", new_event_path, class: "btn btn-success"
 
 - if @events.any?
-  %h3 My Upcoming Events
-  - @events.each do |event|
-    .panel.panel-default
-      .panel-heading
-        %h3.panel-title
-          = link_to event_path(event) do
-            - if event.creator == current_user
-              %span.label.label-success Organizing
-            - else
-              %span.label.label-primary Attending
-            = event.name
-      .panel-body
-        %p
-          %small= event.starts_at.to_s(:long)
-        %p
-          = markdownify(event.description)
-      %ul.list-group
-        %li.list-group-item
-          %span.fa.fa-map-marker.fa-2x
-          = google_maps_link(event.location)
+  .page-header
+    %h3 My Upcoming Events
+  = render @events
+
+  .page-header
+    %h3 Past Events
+  = render @past_events
 
