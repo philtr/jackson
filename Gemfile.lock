@@ -148,6 +148,10 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    sentry-raven (0.7.1)
+      faraday (>= 0.7.6)
+      hashie (>= 1.1.0)
+      uuidtools
     shoulda-context (1.1.6)
     shoulda-matchers (2.5.0)
       activesupport (>= 3.0.0)
@@ -186,6 +190,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uuidtools (2.1.4)
 
 PLATFORMS
   ruby
@@ -209,6 +214,7 @@ DEPENDENCIES
   rails (= 4.0.2)
   rails_12factor
   sass-rails (~> 4.0.1)
+  sentry-raven
   shoulda-context
   shoulda-matchers
   turn
