@@ -13,11 +13,23 @@ class EventTest < ActiveSupport::TestCase
       assert_equal true, Event.upcoming.include?(upcoming_event)
       assert_equal false, Event.upcoming.include?(past_event)
     end
+
+    should "find events for a particular user" do
+      user = create(:user)
+      event1 = create(:event, creator: user)
+      event2 = create(:event, created_by: 999)
+      create(:response, user: user, event: event2)
+
+      events = Event.user(user)
+
+      assert_equal true, events.include?(event1)
+      assert_equal true, events.include?(event2)
+    end
   end
 
   context "An event" do
     setup do
-      @event = create(:event)
+      @event = create(:event, creator: create(:user))
     end
 
     should "have a head count" do
@@ -39,6 +51,10 @@ class EventTest < ActiveSupport::TestCase
 
     should "resolve param back to integer" do
       assert_equal @event, Event.find(@event.to_param)
+    end
+
+    should "know if if it was created by a particular user" do
+      assert_equal true, @event.created_by?(@event.creator)
     end
   end
 end

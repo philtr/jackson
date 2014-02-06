@@ -27,6 +27,13 @@ class UserTest < ActiveSupport::TestCase
       assert_equal false, @user.attending?(create(:event))
     end
 
+    should "get and set first and last name from full_name field" do
+      @user.full_name = "James Earl Jones"
+      assert_equal "James Earl Jones", @user.full_name
+      assert_equal "James", @user.first_name
+      assert_equal "Earl Jones", @user.last_name
+    end
+
     should "have a gravatar" do
       assert_match(/^http:\/\/www.gravatar.com/i, @user.gravatar)
     end
@@ -47,6 +54,11 @@ class UserTest < ActiveSupport::TestCase
         @user.gravatar
 
         User.any_instance.unstub(:random_avatar)
+      end
+
+      should "have a random avatar generator" do
+        avatar_url = @user.send(:random_avatar)
+        assert_match(/https?:\/\/.*/, avatar_url)
       end
     end
   end
