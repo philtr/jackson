@@ -30,8 +30,7 @@ class User < ActiveRecord::Base
     user.email      ||= auth.info.email
     user.avatar_url ||= auth.info.image
     user.token      ||= auth.credentials.token
-    user.auth_hash    = auth.to_h
-
+    user.auth_hash    = JSON.parse(auth.to_json)
     user.tap(&:save)
   end
 

@@ -6,6 +6,7 @@
     %h3 My Upcoming Events
   = render @events
 
+- if @past_events.any?
   .page-header
     %h3 Past Events
   = render @past_events
