@@ -33,7 +33,9 @@
                   %i.fa.fa-comments
 
   .col-md-3
-    %ul.nav
+    %ul.nav.nav-stacked
+      - if @event.creator == current_user
+        %li= link_to "Edit this Event", edit_event_path(@event), class: "btn btn-warning"
       - if current_user? && current_user.attending?(@event)
         %li= link_to "Bow out gracefully", event_response_path(@event, @response), class: "btn btn-danger", method: :delete
         %li

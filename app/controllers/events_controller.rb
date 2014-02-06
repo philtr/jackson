@@ -19,6 +19,20 @@ class EventsController < ApplicationController
     @response = @event.response_for(current_user).presence || Response.new rescue nil
   end
 
+  def edit
+    @event = current_user.created_events.where(id: params[:id]).first
+    redirect_to dashboard_path if @event.nil?
+  end
+
+  def update
+    @event = current_user.created_events.where(id: params[:id]).first
+    redirect_to dashboard_path if @event.nil?
+
+    @event.update_attributes(event_params)
+
+    redirect_to event_path(@event)
+  end
+
   def responses
     redirect_to event_path(params[:id])
   end
