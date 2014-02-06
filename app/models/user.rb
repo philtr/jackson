@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   end
 
   def gravatar(size = 500)
-    "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email.downcase) }?s=#{ size }"
+    "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email.downcase) }?s=#{ size }&d=retro"
   rescue
     avatar_url.presence || random_avatar
   end
