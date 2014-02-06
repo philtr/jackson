@@ -3,13 +3,14 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = current_user
+    @user.update_column(:prompted_for_details, true)
   end
 
   def update
     @user = current_user
     @user.update_attributes(profile_params)
 
-    redirect_to dashboard_path
+    redirect_to session.delete(:return_path).presence || dashboard_path
   end
 
 

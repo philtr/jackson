@@ -18,6 +18,10 @@ class SessionsController < ApplicationController
     @user = User.authorize(auth)
     sign_in_as(@user)
 
+    unless @user.email.present? || @user.prompted_for_details?
+      redirect_to(edit_profile_path) and return
+    end
+
     redirect_to session.delete(:return_path).presence || dashboard_path
   end
 
