@@ -1,0 +1,14 @@
+%h1 #{ @event.name } is today!
+%p Hi there,
+%p
+  We just wanted to remind you that your event, #{ link_to @event.name, event_url(@event) }, is
+  today! It starts at #{ @event.starts_at.strftime("%-I:%M%P") } and is located at
+  #{ google_maps_link(@event.location) }. Here's the description of the event:
+
+%blockquote
+  = markdownify(@event.description)
+
+- content_for :panel do
+  %p
+    If you would like to cancel or update your reservation, you may do so on the
+    #{ link_to "event page", event_url(@event) }.

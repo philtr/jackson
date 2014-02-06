@@ -18,6 +18,9 @@ gem 'haml', '~> 4.0.5'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
 gem 'maruku'
+gem 'nokogiri'
+gem 'postmark-rails'
+gem 'premailer-rails'
 gem 'sass-rails', '~> 4.0.1'
 gem 'uglifier', '>= 2.4.0'
 gem 'unicorn'
@@ -26,6 +29,7 @@ group :development, :test do
   gem 'coveralls', require: false
   gem 'shoulda-context'
   gem 'shoulda-matchers'
+  gem 'mailcatcher', github: "sj26/mailcatcher"
   gem 'factory_girl_rails'
   gem 'mocha', require: false
   gem 'pry-rails'
