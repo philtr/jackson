@@ -15,4 +15,8 @@ class Auth
     @credentials = Auth::Credentials.new(auth_hash[:credentials].to_h)
     @extra = Auth::Extra.new(auth_hash[:extra].to_h)
   end
+
+  def to_h
+    JSON.parse(self.to_json)
+  end
 end

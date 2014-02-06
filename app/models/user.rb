@@ -8,11 +8,11 @@ class User < ActiveRecord::Base
   end
 
   def full_name
-    [ first_name, last_name ].join(" ")
+    [ first_name, last_name ].compact.join(" ").presence
   end
 
   def full_name=(new_name)
-    names = new_name.split(" ")
+    names = new_name.to_s.split(" ")
     self.first_name = names.shift
     self.last_name = names.join(" ")
   end
@@ -23,14 +23,28 @@ class User < ActiveRecord::Base
     avatar_url.presence || random_avatar
   end
 
+  def assign_nil_attributes(attrs)
+    old_attributes = attributes.reject { |key, value| value.blank? }
+    new_attributes = attrs.reject { |key, value| value.blank? }
+
+    assign_attributes(new_attributes.merge(old_attributes))
+
+    self
+  end
+
   def self.authorize(auth)
     user = User.where(provider: auth.provider, uid: auth.uid).first_or_initialize
-    user.first_name ||= auth.info.first_name.presence  || auth.info.name.split(' ').first
-    user.last_name  ||= auth.info.last_name.presence   || auth.info.name.split(' ').last
-    user.email      ||= auth.info.email
-    user.avatar_url ||= auth.info.image
-    user.token      ||= auth.credentials.token
-    user.auth_hash    = JSON.parse(auth.to_json)
+
+    user.assign_nil_attributes({
+      full_name:  auth.info.name,
+      first_name: auth.info.first_name,
+      last_name:  auth.info.last_name,
+      email:      auth.info.email,
+      avatar_url: auth.info.image,
+      token:      auth.credentials.token,
+      auth_hash:  auth.to_h
+    })
+
     user.tap(&:save)
   end
 
@@ -44,4 +58,5 @@ class User < ActiveRecord::Base
       "http://lorempixel.com/#{ size }/#{ size }",
     ].sample
   end
+
 end
