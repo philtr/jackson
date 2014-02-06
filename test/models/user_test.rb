@@ -38,7 +38,7 @@ class UserTest < ActiveSupport::TestCase
       assert_match(/^http:\/\/www.gravatar.com/i, @user.gravatar)
     end
 
-    context "A user without an email address" do
+    context "without an email address" do
       should "use a specified avatar if present" do
         @user.email = nil
         @user.avatar_url = "http://google.com"

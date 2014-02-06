@@ -11,7 +11,7 @@ class EventsController < ApplicationController
 
     @event.save
 
-    redirect_to root_path
+    redirect_to event_path(@event)
   end
 
   def show
@@ -21,12 +21,12 @@ class EventsController < ApplicationController
 
   def edit
     @event = current_user.created_events.where(id: params[:id]).first
-    redirect_to dashboard_path if @event.nil?
+    redirect_to root_path if @event.nil?
   end
 
   def update
     @event = current_user.created_events.where(id: params[:id]).first
-    redirect_to dashboard_path if @event.nil?
+    redirect_to root_path if @event.nil?
 
     @event.update_attributes(event_params)
 

@@ -20,4 +20,11 @@ class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 
   fixtures :all
+
+end
+
+class ActionController::TestCase
+  def signin_as(user)
+    @controller.send(:sign_in_as, user)
+  end
 end
