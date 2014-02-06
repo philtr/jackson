@@ -12,7 +12,7 @@ class Event < ActiveRecord::Base
   end
 
   def created_by?(user)
-    created_by == user.id
+    created_by == user.id rescue false
   end
 
   def response_for(user)
