@@ -7,6 +7,16 @@ class User < ActiveRecord::Base
     events.include?(event)
   end
 
+  def full_name
+    [ first_name, last_name ].join(" ")
+  end
+
+  def full_name=(new_name)
+    names = new_name.split(" ")
+    self.first_name = names.shift
+    self.last_name = names.join(" ")
+  end
+
   def gravatar(size = 500)
     "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email.downcase) }?s=#{ size }&d=retro"
   rescue

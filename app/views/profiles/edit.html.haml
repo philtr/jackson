@@ -1,0 +1,19 @@
+.page-header
+  %h1 Edit your profile
+
+= form_for @user, url: profile_path(@user) do |f|
+
+  .form-group
+    = f.label :full_name
+    = f.text_field :full_name, class: "form-control"
+
+  .form-group
+    = f.label :email, "Email address"
+    = f.text_field :email, class: "form-control"
+    .help-block
+      Your email is used to display a #{ link_to "Gravatar", "http://gravatar.com" } and to send a
+      reminder on the morning of the event. We won't sell or otherwise abuse your email address.
+      Promise.
+
+  = f.submit "Update Profile", class: "btn btn-primary"
+

@@ -7,6 +7,10 @@ Jackson::Application.routes.draw do
     get ':provider/callback', to: 'sessions#create'
   end
 
+  get "/profile", to: redirect("/profile/edit"), as: :profile
+  get "/profile/edit", to: "profiles#edit", as: :edit_profile
+  patch "/profile", to: "profiles#update", as: :update_profile
+
   resources :events do
     resources :responses, only: [ :create, :update, :destroy ]
 
