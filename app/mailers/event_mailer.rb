@@ -1,5 +1,6 @@
 class EventMailer < ActionMailer::Base
-  default from: "Jackson <test@example.com>"
+  default from: ENV["DEFAULT_MAIL_FROM"]
+
   add_template_helper ApplicationHelper
   add_template_helper EventsHelper
 
