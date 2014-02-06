@@ -20,7 +20,7 @@
         .col-sm-2.col-xs-4
           .thumbnail
             = image_tag resp.user.gravatar, style: "width: 100%"
-            - if @event.creator == resp.user
+            - if @event.created_by?(resp.user)
               %span.label.label-default Organizer
             .caption
               %b
@@ -34,7 +34,7 @@
 
   .col-md-3
     %ul.nav.nav-stacked
-      - if @event.creator == current_user
+      - if @event.created_by?(current_user)
         %li= link_to "Edit this Event", edit_event_path(@event), class: "btn btn-warning"
       - if current_user? && current_user.attending?(@event)
         %li= link_to "Bow out gracefully", event_response_path(@event, @response), class: "btn btn-danger", method: :delete

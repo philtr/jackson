@@ -11,6 +11,10 @@ class Event < ActiveRecord::Base
     responses.count + responses.sum(:additional_guests)
   end
 
+  def created_by?(user)
+    created_by == user.id
+  end
+
   def response_for(user)
     responses.where(user_id: user.id).first
   end
