@@ -207,7 +207,6 @@ GEM
       eventmachine (~> 1.0.0)
       thin (~> 1.5.0)
     slop (3.4.7)
-    spring (1.1.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -274,7 +273,6 @@ DEPENDENCIES
   sentry-raven
   shoulda-context
   shoulda-matchers
-  spring
   turn
   uglifier (>= 2.4.0)
   unicorn

@@ -34,7 +34,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'mocha', require: false
   gem 'pry-rails'
-  gem 'spring'
   gem 'turn'
 end
 
