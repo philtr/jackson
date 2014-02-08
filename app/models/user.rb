@@ -24,6 +24,10 @@ class User < ActiveRecord::Base
     avatar_url.presence || random_avatar
   end
 
+  def providers
+    identities.pluck(:provider)
+  end
+
   protected
 
   def random_avatar(size = 500)
