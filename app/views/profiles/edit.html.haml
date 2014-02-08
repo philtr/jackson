@@ -17,3 +17,19 @@
 
   = f.submit "Update Profile", class: "btn btn-primary"
 
+%hr
+
+%h3 Connect your other accounts
+
+= link_to auth_path(:github), class: "btn btn-default" do
+  %span.fa.fa-github.fa-lg
+  GitHub
+= link_to auth_path(:twitter), class: "btn btn-info" do
+  %span.fa.fa-twitter.fa-lg
+  Twitter
+= link_to auth_path(:facebook), class: "btn btn-primary" do
+  %span.fa.fa-facebook.fa-lg
+  Facebook
+= link_to auth_path(:gplus), class: "btn btn-danger" do
+  %span.fa.fa-google-plus.fa-lg
+  Google+
