@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def edit
     @user = current_user
-    @user.update_column(:prompted_for_details, true)
+    @user.update_column(:profile_complete, true)
   end
 
   def update

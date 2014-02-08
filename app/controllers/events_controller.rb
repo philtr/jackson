@@ -16,6 +16,8 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.where(id: params[:id]).includes(responses: [ :user ]).first
+    redirect_to root_path if @event.nil?
+
     @response = @event.response_for(current_user).presence || Response.new rescue nil
   end
 

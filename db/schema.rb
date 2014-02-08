@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140206150758) do
+ActiveRecord::Schema.define(version: 20140207134315) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(version: 20140206150758) do
     t.datetime "updated_at"
   end
 
+  create_table "identities", force: true do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
+    t.hstore   "auth_hash"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "avatar_url"
+    t.boolean  "prompted_for_details", default: false
+    t.integer  "user_id"
+  end
+
   create_table "responses", force: true do |t|
     t.integer  "user_id"
     t.string   "organization"
@@ -41,17 +56,14 @@ ActiveRecord::Schema.define(version: 20140206150758) do
   add_index "responses", ["event_id"], name: "index_responses_on_event_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
-    t.hstore   "auth_hash"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.string   "avatar_url"
+    t.string   "timezone"
+    t.boolean  "profile_complete"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "avatar_url"
-    t.boolean  "prompted_for_details", default: false
   end
 
 end

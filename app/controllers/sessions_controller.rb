@@ -15,10 +15,11 @@ class SessionsController < ApplicationController
 
   # GET /auth/:provider/callback?param=a98xh0xeui2sc
   def create
-    @user = User.authorize(auth)
+    @identity = Identity.authorize(auth, user: current_user)
+    @user = @identity.user
     sign_in_as(@user)
 
-    unless @user.email.present? || @user.prompted_for_details?
+    unless @user.email.present? || @user.profile_complete?
       redirect_to(edit_profile_path) and return
     end
 
