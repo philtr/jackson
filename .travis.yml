@@ -1,6 +1,8 @@
 language: ruby
 rvm: 2.1.0
 cache: bundler
+env:
+  - SECRET_TOKEN=f3ccf9b34a082fdb8065b689642af85a
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database jackson_test;' -U postgres
