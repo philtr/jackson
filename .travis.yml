@@ -8,15 +8,4 @@ before_script:
   - psql -c 'create database jackson_test;' -U postgres
   - bundle exec rake db:migrate
 script: bundle exec rake test
-deploy:
-  provider: heroku
-  api_key:
-    secure: fN0fogX8djApnKzW4k6Z8q1SXQOIYdI8dzA4T6uqqRYF+OMxbrjTDBke8a0txpO8fstz0OZikXY9m+fJCl6gwr33lKWz0pDvWu2dyBZX1MYE36lCkAwoHZemWpNVffeCFPHe6PQhBc31aud4oHZVoOuCIQj6UHgdXcu8Vq5ij+E=
-  app: jacksonisthere
-  on:
-    repo: philtr/jackson
-    branch: master
-    rvm: 2.1.0
-  run:
-    - "rake db:migrate"
-    - restart
+
