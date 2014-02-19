@@ -20,8 +20,6 @@
         .col-sm-2.col-xs-4
           .thumbnail
             = image_tag resp.user.gravatar, style: "width: 100%"
-            - if @event.created_by?(resp.user)
-              %span.label.label-default Organizer
             .caption
               %b
                 = resp.user.first_name
