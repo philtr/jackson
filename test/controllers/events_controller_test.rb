@@ -65,20 +65,13 @@ class EventsControllerTest < ActionController::TestCase
       assert_equal "hi", event.reload.description
     end
 
-    should "not have an edit event page for other events" do
+    should "not update other events" do
       event = create(:event, created_by: 999, description: "no")
       patch :update, id: event.to_param, event: { description: "hi" }
 
       assert_equal "no", event.reload.description
       assert_redirected_to root_path
     end
-  end
-
-  should "redirect /responses to event path" do
-    event = create(:event)
-    get :responses
-
-    assert_redirected_to event_path(event)
   end
 end
 

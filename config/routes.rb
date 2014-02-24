@@ -12,11 +12,7 @@ Jackson::Application.routes.draw do
   patch "/profile", to: "profiles#update", as: :update_profile
 
   resources :events do
-    resources :responses, only: [ :create, :update, :destroy ]
-
-    member do
-      get :responses
-    end
+    resources :responses, only: [:index, :create, :update, :destroy ]
   end
 
   get '/dashboard', to: 'dashboard#index', as: 'dashboard'
