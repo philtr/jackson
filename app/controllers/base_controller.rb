@@ -2,6 +2,7 @@ class BaseController < ApplicationController
   before_filter :require_signed_out
 
   def home
+    page_title "Home"
   end
 
   private

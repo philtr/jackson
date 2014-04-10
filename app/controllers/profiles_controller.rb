@@ -2,6 +2,8 @@ class ProfilesController < ApplicationController
   before_filter :require_authentication
 
   def edit
+    page_title "Edit Profile"
+
     @user = current_user
     @user.update_column(:profile_complete, true)
   end

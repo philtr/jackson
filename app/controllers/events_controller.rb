@@ -2,6 +2,8 @@ class EventsController < ApplicationController
   before_filter :require_authentication, except: [ :show ]
 
   def new
+    page_title "New Event"
+
     @event = Event.new
   end
 
@@ -18,12 +20,16 @@ class EventsController < ApplicationController
     @event = Event.where(id: params[:id]).includes(responses: [ :user ]).first
     redirect_to root_path and return if @event.nil?
 
+    page_title @event.name
+
     @response = @event.response_for(current_user).presence || Response.new rescue nil
   end
 
   def edit
     @event = current_user.created_events.where(id: params[:id]).first
     redirect_to root_path and return if @event.nil?
+
+    page_title "Editing #{ @event.name }"
   end
 
   def update

@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   helper_method :auth_path, :current_user, :current_user?
+  helper_method :page_title
 
   protected
 
@@ -19,6 +20,11 @@ class ApplicationController < ActionController::Base
 
   def current_user?
     current_user.present?
+  end
+
+  def page_title(title = nil)
+    @page_title = title unless title.nil?
+    @page_title
   end
 
   def require_authentication
