@@ -22,13 +22,13 @@
             = image_tag resp.user.gravatar, style: "width: 100%"
             .caption
               %b
-                = resp.user.first_name
-                = resp.user.last_name
-                - if resp.additional_guests > 0
-                  %span.label.label-danger +#{ resp.additional_guests }
+                %a{ data: { toggle: "popover", content: resp.user.first_name + " " + resp.user.last_name } }
+                  %i.fa.fa-user
               - if resp.comments.present?
                 %a{ data: { toggle: "popover" , content: markdownify(resp.comments).html_safe } }
                   %i.fa.fa-comments
+              - if resp.additional_guests > 0
+                %span.label.label-danger +#{ resp.additional_guests }
 
   .col-md-3
     %ul.nav.nav-stacked
