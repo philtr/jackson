@@ -1,5 +1,39 @@
 .jumbotron
   %h1 Jackson is there.
-  %p And you know he'll be there because he RSVPed. And he's bringing 4 friends.
-  = link_to sign_in_path, class: "btn btn-success btn-lg" do
-    Sign in
+  %p And you know he'll be there because he RSVPed. And he's bringing friends.
+  .btn-group
+    = link_to sign_in_path, class: "btn btn-success btn-lg" do
+      Sign in:
+    = link_to auth_path(:github), class: "btn btn-default btn-lg" do
+      %span.fa.fa-github.fa-lg
+      GitHub
+    = link_to auth_path(:twitter), class: "btn btn-info btn-lg" do
+      %span.fa.fa-twitter.fa-lg
+      Twitter
+    = link_to auth_path(:facebook), class: "btn btn-primary btn-lg" do
+      %span.fa.fa-facebook.fa-lg
+      Facebook
+    = link_to auth_path(:gplus), class: "btn btn-danger btn-lg" do
+      %span.fa.fa-google-plus.fa-lg
+      Google+
+
+.row
+  .col-md-4
+    %h3
+      %span.fa.fa-check
+      Bingo!
+    %p Social sign-in bingo. Sign in with your GitHub, Twitter, Facebook, or Google+ account.
+
+  .col-md-4
+    %h3
+      %span.fa.fa-group
+      Bring Friends
+    %p
+      Your guests can bring friends. Just adjust the number of additional guests when you RSVP.
+      You can also leave a comment for everyone to see!
+
+  .col-md-4
+    %h3
+      %span.fa.fa-bell
+      Reminder Email
+    %p Get a reminder email on the day of your event. So you don't forget!

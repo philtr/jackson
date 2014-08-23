@@ -1,6 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootswatch/flatly/variables";
+@import "variables";
 @import "bootstrap";
 @import "bootswatch/flatly/bootswatch";
 
+.navbar-header { font-family: $headings-font-family; }
 footer { padding-bottom: 1em; }
