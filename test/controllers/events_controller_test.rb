@@ -14,7 +14,7 @@ class EventsControllerTest < ActionController::TestCase
 
     should "not have a new event page" do
       get :new
-      assert_redirected_to root_path
+      assert_redirected_to sign_in_path
     end
   end
 

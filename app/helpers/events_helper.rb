@@ -3,7 +3,11 @@ module EventsHelper
     link_to location, "https://www.google.com/maps/preview/search/#{ URI.escape(location) }" unless location.nil?
   end
 
-  def name_and_guests(resp)
-    %(#{ resp.user.first_name } #{ resp.user.last_name } <span class="label label-danger">+#{ resp.additional_guests }</span>)
+  def response_popover(resp)
+    comment = markdownify(resp.comments).html_safe
+    name = resp.user.first_name + " " + resp.user.last_name
+    guests = resp.additional_guests
+
+    render "events/response_popover", comment: comment, name: name, guests: guests
   end
 end

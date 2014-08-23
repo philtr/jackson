@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   def require_authentication
     unless current_user?
       session[:return_path] = request.fullpath
-      redirect_to root_path and return
+      redirect_to sign_in_path, notice: "You gotta be signed in to do that!" and return
     end
   end
 

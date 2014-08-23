@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
   # GET /sign-in
   def new
-    redirect_to auth_path
   end
 
   # GET /sign-out
