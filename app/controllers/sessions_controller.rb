@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   # GET /sign-in
   def new
+    page_title "Sign in"
   end
 
   # GET /sign-out
