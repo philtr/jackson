@@ -4,5 +4,27 @@
 @import "bootstrap";
 @import "bootswatch/flatly/bootswatch";
 
-.navbar-header { font-family: $headings-font-family; }
-footer { padding-bottom: 1em; }
+.navbar-header {
+  font-family: $headings-font-family;
+}
+
+
+footer {
+  padding-bottom: 1em;
+}
+
+.datepicker {
+  padding: 1em;
+
+  .day {
+    font-size: 80%;
+
+    &.old {
+      color: $gray-light;
+    }
+  }
+}
+
+.datepicker-switch, .prev, .next {
+  text-align: center;
+}
