@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  include EventParams
+
   before_filter :require_authentication, except: [ :show ]
 
   def new
@@ -41,9 +43,4 @@ class EventsController < ApplicationController
     redirect_to event_path(@event)
   end
 
-  protected
-
-  def event_params
-    params.require(:event).permit(:name, :description, :starts_at, :ends_at, :location)
-  end
 end

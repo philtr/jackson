@@ -1,4 +1,8 @@
 class Event < ActiveRecord::Base
+  include FriendlyDatetime
+
+  friendly_datetime :starts_at, :ends_at
+
   has_many :responses
   has_many :users, through: :responses
 
@@ -6,6 +10,7 @@ class Event < ActiveRecord::Base
 
   scope :upcoming, -> { where("events.starts_at > ?", Time.current).order("events.starts_at ASC") }
   scope :past, -> { where("events.starts_at < ?", Time.current).order("events.starts_at DESC") }
+
 
   def attending
     responses.count + responses.sum(:additional_guests)

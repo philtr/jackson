@@ -9,14 +9,34 @@
     = f.text_area :description, rows: 4, class: "form-control"
 
   .form-group
-    = f.label :starts_at
-    %br
-    = f.datetime_select :starts_at, class: "form-control"
+    .row
+      .col-md-6
+        = f.label :starts_at_date
+        %br
+        = f.text_field :starts_at_date, class: "form-control", data: { provide: "datepicker" }
+      .col-md-3
+        = f.label :starts_at_time
+        %br
+        = f.text_field :starts_at_time, placeholder: "6:00, e.g.", class: "form-control"
+      .col-md-3
+        = f.label :starts_at_am_pm
+        %br
+        = f.select :starts_at_am_pm, [ "AM", "PM" ], {}, class: "form-control"
 
   .form-group
-    = f.label :ends_at
-    %br
-    = f.datetime_select :ends_at, class: "form-control"
+    .row
+      .col-md-6
+        = f.label :ends_at_date
+        %br
+        = f.text_field :ends_at_date, class: "form-control", data: { provide: "datepicker" }
+      .col-md-3
+        = f.label :ends_at_time
+        %br
+        = f.text_field :ends_at_time, placeholder: "6:00, e.g.", class: "form-control"
+      .col-md-3
+        = f.label :ends_at_am_pm
+        %br
+        = f.select :ends_at_am_pm, [ "AM", "PM" ], {}, class: "form-control"
 
   .form-group
     = f.label :location

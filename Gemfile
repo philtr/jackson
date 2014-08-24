@@ -30,6 +30,8 @@ gem 'uglifier', '>= 2.4.0'
 gem 'unicorn'
 
 group :development, :test do
+  gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'coveralls', require: false
   gem 'shoulda-context'
   gem 'shoulda-matchers'

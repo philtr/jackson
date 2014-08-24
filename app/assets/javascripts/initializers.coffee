@@ -3,3 +3,4 @@ $ ->
     container: "body"
     html: true
     trigger: "hover"
+
