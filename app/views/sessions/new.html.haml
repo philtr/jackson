@@ -2,7 +2,21 @@
 
 %p Sign in or sign up with one of your accounts to get started:
 
-.btn-group
+.visible-sm-block.visible-xs-block
+  = link_to auth_path(:github), class: "btn btn-default btn-lg btn-block" do
+    %span.fa.fa-github.fa-lg
+    GitHub
+  = link_to auth_path(:twitter), class: "btn btn-info btn-lg btn-block" do
+    %span.fa.fa-twitter.fa-lg
+    Twitter
+  = link_to auth_path(:facebook), class: "btn btn-primary btn-lg btn-block" do
+    %span.fa.fa-facebook.fa-lg
+    Facebook
+  = link_to auth_path(:gplus), class: "btn btn-danger btn-lg btn-block" do
+    %span.fa.fa-google-plus.fa-lg
+    Google+
+
+.btn-group.hidden-sm.hidden-xs
   = link_to auth_path(:github), class: "btn btn-default btn-lg" do
     %span.fa.fa-github.fa-lg
     GitHub

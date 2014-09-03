@@ -3,9 +3,12 @@
     %span.fa.fa-thumbs-up
     Jackson is there.
   %p And you know he'll be there because he RSVPed. And he's bringing friends.
-  .btn-group
+  .visible-xs-block.visible-sm-block
+    = link_to sign_in_path, class: "btn btn-success btn-lg btn-block" do
+      Sign in
+  .btn-group.hidden-xs.hidden-sm
     = link_to sign_in_path, class: "btn btn-success btn-lg" do
-      Sign in:
+      Sign in
     = link_to auth_path(:github), class: "btn btn-default btn-lg" do
       %span.fa.fa-github.fa-lg
       GitHub
