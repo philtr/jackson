@@ -7,7 +7,10 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
   Coveralls::SimpleCov::Formatter
 ]
-SimpleCov.start('rails')
+
+SimpleCov.start('rails') do
+  add_group "Services", "app/services"
+end
 
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
@@ -21,7 +24,6 @@ class ActiveSupport::TestCase
   include FactoryGirl::Syntax::Methods
 
   fixtures :all
-
 end
 
 class ActionController::TestCase

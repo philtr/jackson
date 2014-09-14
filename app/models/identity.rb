@@ -5,8 +5,8 @@ class Identity < ActiveRecord::Base
   after_save :merge_cleanup
 
   def assign_empty_attributes(attrs)
-    old_attributes = attributes.compact
-    new_attributes = attrs.compact
+    old_attributes = HashCompactor.call(attributes)
+    new_attributes = HashCompactor.call(attrs)
 
     assign_attributes(new_attributes.merge(old_attributes))
 
@@ -53,8 +53,8 @@ class Identity < ActiveRecord::Base
     self.user = new_user and return if user.nil?
 
     unless new_user.id == user_id
-      new_attributes = new_user.attributes.compact.except("id")
-      old_attributes = user.attributes.compact.except("id")
+      new_attributes = HashCompactor.call(new_user.attributes).except("id")
+      old_attributes = HashCompactor.call(user.attributes).except("id")
 
       new_user.assign_attributes(new_attributes.merge(old_attributes))
 
