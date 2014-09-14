@@ -8,9 +8,9 @@ gem 'rails', '4.1.6'
 gem 'pg'
 
 gem 'omniauth', '~> 1.2.1'
-gem 'omniauth-facebook', '~> 1.6.0'
-gem 'omniauth-github', '~> 1.1.1'
-gem 'omniauth-gplus', '~> 1.2.0'
+gem 'omniauth-facebook', '~> 2.0.0'
+gem 'omniauth-github', '~> 1.1.2'
+gem 'omniauth-gplus', '~> 2.0.1'
 gem 'omniauth-twitter', '~> 1.0.1'
 
 gem 'bootstrap-sass'
