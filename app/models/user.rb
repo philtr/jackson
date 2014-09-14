@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     identities.pluck(:provider)
   end
 
+  def provider?(provider_name)
+    providers.include?(provider_name)
+  end
+
   protected
 
   def random_avatar(size = 500)

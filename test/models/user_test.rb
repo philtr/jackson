@@ -21,6 +21,16 @@ class UserTest < ActiveSupport::TestCase
       assert_equal "Earl Jones", @user.last_name
     end
 
+    should "have a list of the providers of their current identities" do
+      create_list(:identity, 2, user: @user)
+      assert_equal [ "factory_girl_1", "factory_girl_2" ], @user.providers
+    end
+
+    should "know whether or not they have an identity with a particular provider" do
+      @user.stubs(:providers).returns(["test1","test2","test3"])
+      assert_equal true, @user.provider?("test2")
+    end
+
     should "have a gravatar" do
       assert_match(/^http:\/\/www.gravatar.com/i, @user.gravatar)
     end

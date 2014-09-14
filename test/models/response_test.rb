@@ -15,4 +15,13 @@ class ResponseTest < ActiveSupport::TestCase
       assert_equal false, Response.upcoming.include?(past_response)
     end
   end
+
+  context "A response" do
+    should "set additional guests to 0 if a negative number is provided" do
+      response = build(:response, additional_guests: -95)
+      response.valid?
+
+      assert_equal 0, response.additional_guests
+    end
+  end
 end
