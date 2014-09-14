@@ -2,10 +2,8 @@ source 'https://rubygems.org'
 
 ruby "2.1.2"
 
-gem 'dotenv-rails', '~> 0.9.0'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.9'
+gem 'rails', '4.1.6'
 
 gem 'pg'
 
@@ -33,13 +31,15 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'coveralls', require: false
+  gem 'dotenv-rails'
   gem 'shoulda-context'
   gem 'shoulda-matchers'
   gem 'mailcatcher', github: "sj26/mailcatcher"
+  gem 'minitest'
+  gem 'minitest-reporters'
   gem 'factory_girl_rails'
   gem 'mocha', require: false
   gem 'pry-rails'
-  gem 'turn'
 end
 
 group :production do
