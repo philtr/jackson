@@ -23,14 +23,14 @@
 
 .btn-group
   = link_to auth_path(:github), class: "btn btn-default #{ "disabled" if current_user.provider?("github") }" do
-    %span.fa.fa-github.fa-lg
+    %span.icon-githubj
     GitHub
   = link_to auth_path(:twitter), class: "btn btn-info #{ "disabled" if current_user.provider?("twitter") }" do
-    %span.fa.fa-twitter.fa-lg
+    %span.icon-twitter-bird
     Twitter
   = link_to auth_path(:facebook), class: "btn btn-primary #{ "disabled" if current_user.provider?("facebook") }" do
-    %span.fa.fa-facebook.fa-lg
+    %span.icon-facebook
     Facebook
   = link_to auth_path(:gplus), class: "btn btn-danger #{ "disabled" if current_user.provider?("gplus") }" do
-    %span.fa.fa-google-plus.fa-lg
+    %span.icon-gplus
     Google+

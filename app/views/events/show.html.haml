@@ -4,10 +4,10 @@
       = @event.name
 
     %p
-      %span.fa.fa-clock-o.fa-2x
+      %span.icon-calendar
       = @event.starts_at.to_s(:long)
     %p
-      %span.fa.fa-map-marker.fa-2x
+      %span.icon-location
       = google_maps_link(@event.location)
     %p= markdownify(@event.description)
 

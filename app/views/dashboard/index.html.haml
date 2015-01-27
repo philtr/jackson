@@ -1,5 +1,6 @@
 .pull-right
-  = link_to "Create an Event", new_event_path, class: "btn btn-success"
+  = link_to  new_event_path, class: "btn btn-success" do
+    <strong>+</strong>  Create an Event
 
 .page-header
   %h3 My Upcoming Events
@@ -7,7 +8,8 @@
   = render @events
 - else
   .well{ style: "text-align: center" }
-    .fa.fa-calendar.fa-5x
+    %h1
+      .icon-calendar
     %h3 You don't have any upcoming events.
     %p
       = link_to "Create an event", new_event_path
