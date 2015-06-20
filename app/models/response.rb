@@ -2,8 +2,6 @@ class Response < ActiveRecord::Base
   belongs_to :event, touch: true
   belongs_to :user
 
-  validates :user_id, uniqueness: { scope: :event_id }
-
   scope :upcoming, -> { joins(:event).where("events.starts_at > ?", Time.current) }
   scope :today, -> { joins(:event).where("events.starts_at > ? AND events.starts_at < ?", Time.current.beginning_of_day, Time.current.end_of_day) }
 
