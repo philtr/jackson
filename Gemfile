@@ -23,6 +23,7 @@ gem "nokogiri"
 gem "postmark-rails"
 gem "premailer-rails"
 gem "sass-rails", "~> 5.0"
+gem "turbolinks", "~> 2.5"
 gem "uglifier", "~> 2.7"
 gem "unicorn"
 

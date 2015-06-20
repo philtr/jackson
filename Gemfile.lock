@@ -269,6 +269,8 @@ GEM
     thread_safe (0.3.5)
     tilt (1.4.1)
     tins (1.5.2)
+    turbolinks (2.5.3)
+      coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -317,5 +319,6 @@ DEPENDENCIES
   sentry-raven
   shoulda-context
   shoulda-matchers
+  turbolinks (~> 2.5)
   uglifier (~> 2.7)
   unicorn

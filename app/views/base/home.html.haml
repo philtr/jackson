@@ -7,18 +7,18 @@
     = link_to sign_in_path, class: "btn btn-success btn-lg btn-block" do
       Sign in
   .btn-group.hidden-xs.hidden-sm
-    = link_to sign_in_path, class: "btn btn-success btn-lg" do
+    = link_to sign_in_path, class: "btn btn-success btn-lg", "data-no-turbolink" => true do
       Sign in
-    = link_to auth_path(:github), class: "btn btn-default btn-lg" do
+    = link_to auth_path(:github), class: "btn btn-default btn-lg", "data-no-turbolink" => true do
       %span.icon-github
       GitHub
-    = link_to auth_path(:twitter), class: "btn btn-info btn-lg" do
+    = link_to auth_path(:twitter), class: "btn btn-info btn-lg", "data-no-turbolink" => true do
       %span.icon-twitter-bird
       Twitter
-    = link_to auth_path(:facebook), class: "btn btn-primary btn-lg" do
+    = link_to auth_path(:facebook), class: "btn btn-primary btn-lg", "data-no-turbolink" => true do
       %span.icon-facebook
       Facebook
-    = link_to auth_path(:gplus), class: "btn btn-danger btn-lg" do
+    = link_to auth_path(:gplus), class: "btn btn-danger btn-lg", "data-no-turbolink" => true do
       %span.icon-gplus
       Google+
 
