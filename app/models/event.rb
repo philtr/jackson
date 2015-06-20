@@ -27,4 +27,9 @@ class Event < ActiveRecord::Base
   def to_param
     "#{ id }-#{ name.parameterize }"
   end
+
+  # cache key for a list of events
+  def self.cache_key
+    order(updated_at: :desc).first.cache_key
+  end
 end
