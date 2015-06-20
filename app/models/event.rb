@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
   friendly_datetime :starts_at, :ends_at
 
   has_many :responses
-  has_many :users, through: :responses
+  has_many :users, through: :responses, autosave: true
 
   belongs_to :creator, class_name: "User", foreign_key: :created_by
 
