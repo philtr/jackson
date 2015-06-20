@@ -29,7 +29,8 @@ class Event < ActiveRecord::Base
   end
 
   def self.user(user_or_id)
-    user = User.find(user_or_id)
+    id = user_or_id.try(:id) || user
+    user = User.find(id)
 
     Event
       .includes(:responses)
