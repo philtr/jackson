@@ -27,15 +27,4 @@ class Event < ActiveRecord::Base
   def to_param
     "#{ id }-#{ name.parameterize }"
   end
-
-  def self.user(user_or_id)
-    id = user_or_id.try(:id) || user
-    user = User.find(id)
-
-    Event
-      .includes(:responses)
-      .where("responses.user_id = ? OR events.created_by = ?", user.id, user.id)
-      .references(:responses)
-      .distinct.limit(10)
-  end
 end

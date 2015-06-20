@@ -1,23 +1,24 @@
-.pull-right
-  = link_to  new_event_path, class: "btn btn-success" do
-    <strong>+</strong>  Create an Event
+- cache [ "v1", @user, "events" ] do
+  .pull-right
+    = link_to  new_event_path, class: "btn btn-success" do
+      <strong>+</strong>  Create an Event
 
-.page-header
-  %h3 My Upcoming Events
-- if @events.any?
-  = render @events
-- else
-  .well{ style: "text-align: center" }
-    %h1
-      .icon-calendar
-    %h3 You don't have any upcoming events.
-    %p
-      = link_to "Create an event", new_event_path
-      yourself, or, if you're looking for something to do,
-      check out #{ link_to "Ruby FTW", "http://rubyftw.org" }.
-
-- if @past_events.any?
   .page-header
-    %h3 Past Events
-  = render @past_events
+    %h3 My Upcoming Events
+  - if @events.any?
+    = render @events
+  - else
+    .well{ style: "text-align: center" }
+      %h1
+        .icon-calendar
+      %h3 You don't have any upcoming events.
+      %p
+        = link_to "Create an event", new_event_path
+        yourself, or, if you're looking for something to do,
+        check out #{ link_to "Ruby FTW", "http://rubyftw.org" }.
+
+  - if @past_events.any?
+    .page-header
+      %h3 Past Events
+    = render @past_events
 

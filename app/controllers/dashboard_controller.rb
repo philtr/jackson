@@ -4,8 +4,8 @@ class DashboardController < ApplicationController
   def index
     page_title "Your Events"
 
-    @events = Event.user(current_user).upcoming
-    @past_events = Event.user(current_user).past
+    @events = current_user.events.upcoming
+    @past_events = current_user.events.past
   end
 
 end
