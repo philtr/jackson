@@ -5,6 +5,11 @@
 @import "bootstrap";
 @import "bootswatch/flatly/bootswatch";
 
+html.turbolinks-progress-bar::before {
+  background-color: $brand-success !important;
+  height: 3px !important;
+}
+
 .navbar-header {
   font-family: $headings-font-family;
 }
