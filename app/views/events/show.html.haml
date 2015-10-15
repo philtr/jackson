@@ -24,20 +24,23 @@
                 = image_tag resp.user.gravatar, style: "width: 100%"
 
   .col-md-3
-    - if @event.created_by?(current_user)
-      %div= link_to "Edit this Event", edit_event_path(@event), class: "btn btn-warning col-sm-12"
-    - if current_user? && current_user.attending?(@event)
-      %p= link_to "Bow out gracefully", event_response_path(@event, @response), class: "btn btn-danger col-sm-12", method: :delete
-      %p You're in! Feel free to leave any comments or note additional guests below.
-      = form_for @response, url: event_response_path(@event, @response) do |f|
-        .form-group
-          = f.label :comments
-          = f.text_area :comments, placeholder: "Comments", rows: 6, class: "form-control"
-        .form-group
-          = f.label :additional_guests
-          = f.number_field :additional_guests, class: "form-control", min: "0"
+    .sidebar-links
+      - if @event.created_by?(current_user)
+        = link_to "Edit this event", edit_event_path(@event), class: "btn btn-warning col-sm-12"
+      - if current_user? && current_user.attending?(@event)
+        = link_to "Bow out gracefully", event_response_path(@event, @response), class: "btn btn-danger col-sm-12", method: :delete
 
-        = f.submit nil, class: "btn btn-success col-sm-12"
-    - else
-      %div= link_to "I'll be there!", event_responses_path(@event), class: "btn btn-default col-sm-12", method: :post
+        %p You're in! Feel free to leave any comments or note additional guests below.
+
+        = form_for @response, url: event_response_path(@event, @response) do |f|
+          .form-group
+            = f.label :comments
+            = f.text_area :comments, placeholder: "Comments", rows: 6, class: "form-control"
+          .form-group
+            = f.label :additional_guests
+            = f.number_field :additional_guests, class: "form-control", min: "0"
+
+          = f.submit nil, class: "btn btn-success col-sm-12"
+      - else
+        = link_to "I'll be there!", event_responses_path(@event), class: "btn btn-default col-sm-12", method: :post
 
