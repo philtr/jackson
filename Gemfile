@@ -34,7 +34,7 @@ group :development, :test do
   gem "coveralls", require: false
   gem "dotenv-rails"
   gem "shoulda-context"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", "~> 2.8.0"
   gem "mailcatcher", github: "sj26/mailcatcher"
   gem "minitest"
   gem "minitest-reporters"
