@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20140207134315) do
   enable_extension "plpgsql"
   enable_extension "hstore"
 
-  create_table "events", force: true do |t|
+  create_table "events", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.datetime "starts_at"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140207134315) do
     t.datetime "updated_at"
   end
 
-  create_table "identities", force: true do |t|
+  create_table "identities", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20140207134315) do
     t.integer  "user_id"
   end
 
-  create_table "responses", force: true do |t|
+  create_table "responses", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "organization"
     t.integer  "additional_guests", default: 0
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20140207134315) do
 
   add_index "responses", ["event_id"], name: "index_responses_on_event_id", using: :btree
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"

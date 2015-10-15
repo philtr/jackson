@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.2.0"
+ruby "2.2.3"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails"
 gem "rails", "4.2.2"
@@ -34,7 +34,7 @@ group :development, :test do
   gem "coveralls", require: false
   gem "dotenv-rails"
   gem "shoulda-context"
-  gem "shoulda-matchers"
+  gem "shoulda-matchers", "~> 2.8.0"
   gem "mailcatcher", github: "sj26/mailcatcher"
   gem "minitest"
   gem "minitest-reporters"
