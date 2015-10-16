@@ -8,4 +8,4 @@ before_script:
   - psql -c 'create database jackson_test;' -U postgres
   - bundle exec rake db:migrate
 script: bundle exec rake test
-
+sudo: false
