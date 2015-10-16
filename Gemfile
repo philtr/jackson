@@ -2,8 +2,7 @@ source "https://rubygems.org"
 
 ruby "2.2.3"
 
-# Bundle edge Rails instead: gem "rails", github: "rails/rails"
-gem "rails", "4.2.2"
+gem "rails", "4.2.4"
 
 gem "pg"
 
@@ -33,14 +32,11 @@ group :development, :test do
   gem "binding_of_caller"
   gem "coveralls", require: false
   gem "dotenv-rails"
-  gem "shoulda-context"
-  gem "shoulda-matchers", "~> 2.8.0"
+  gem "shoulda-matchers", "~> 3.0"
   gem "mailcatcher", github: "sj26/mailcatcher"
-  gem "minitest"
-  gem "minitest-reporters"
   gem "factory_girl_rails"
-  gem "mocha", require: false
   gem "pry-rails"
+  gem "rspec-rails"
 end
 
 group :production do
