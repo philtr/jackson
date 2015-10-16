@@ -47,12 +47,16 @@ describe ResponsesController do
     describe "POST create" do
       it "creates a new response for the event" do
         expect do
-          post :create, event_id: event.to_param, response: attributes_for(:response)
+          post :create,
+               event_id: event.to_param,
+               response: attributes_for(:response)
         end.to change { event.reload.responses.count }.by(1)
       end
 
       it "redirects to the event page" do
-        post :create, event_id: event.to_param, response: attributes_for(:response)
+        post :create,
+             event_id: event.to_param,
+             response: attributes_for(:response)
         expect(response).to redirect_to(event_path(event))
       end
 
@@ -62,8 +66,8 @@ describe ResponsesController do
 
           expect do
             post :create,
-              event_id: event.to_param,
-              response: attributes_for(:response, user: user, event: event)
+                 event_id: event.to_param,
+                 response: attributes_for(:response, user: user, event: event)
           end.not_to change { event.reload.responses.count }
         end
       end
@@ -75,17 +79,19 @@ describe ResponsesController do
       it "updates the user's response" do
         expect do
           patch :update,
-            event_id: event.to_param,
-            id: event_response.to_param,
-            response: { additional_guests: event_response.additional_guests + 1 }
+                event_id: event.to_param,
+                id: event_response.to_param,
+                response: {
+                  additional_guests: event_response.additional_guests + 1
+                }
         end.to change { event_response.reload.additional_guests }.by(1)
       end
 
       it "redirects to the event path" do
         patch :update,
-          event_id: event.to_param,
-          id: event_response.to_param,
-          response: { additional_guests: 100 }
+              event_id: event.to_param,
+              id: event_response.to_param,
+              response: { additional_guests: 100 }
         expect(response).to redirect_to(event_path(event))
       end
     end

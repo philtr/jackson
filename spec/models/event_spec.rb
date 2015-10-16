@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 describe Event do
   it { should have_many(:responses) }
@@ -32,7 +32,7 @@ describe Event do
 
     it "parameterizes all pretty like" do
       event.name = "Happiness is a warm gun"
-      assert_equal "#{ event.id }-happiness-is-a-warm-gun", event.to_param
+      assert_equal "#{event.id}-happiness-is-a-warm-gun", event.to_param
     end
 
     it "resolves param back to integer" do
