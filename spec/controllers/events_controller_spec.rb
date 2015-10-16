@@ -1,8 +1,8 @@
-require "test_helper"
+require "rails_helper"
 
-class EventsControllerTest < ActionController::TestCase
+describe EventsController do
   context "An unauthenticated user" do
-    should "be able to view an event" do
+    it "views an event" do
       event = create(:event)
 
       get :show, id: event.to_param
@@ -12,19 +12,19 @@ class EventsControllerTest < ActionController::TestCase
       assert assigns(:event).present?
     end
 
-    should "not have a new event page" do
+    it "does not have a new event page" do
       get :new
       assert_redirected_to sign_in_path
     end
   end
 
   context "An authenticated user" do
-    setup do
+    before do
       @user = create(:user)
       signin_as(@user)
     end
 
-    should "have a new event page" do
+    it "has a new event page" do
       get :new
 
       assert_response :success
@@ -32,17 +32,17 @@ class EventsControllerTest < ActionController::TestCase
       assert assigns(:event).new_record?
     end
 
-    should "be able to create a new valid event" do
+    it "creates a new valid event" do
       assert_equal @user, @controller.send(:current_user)
 
-      assert_difference "Event.count", 1 do
+      expect do
         post :create, event: attributes_for(:event)
-      end
+      end.to change(Event, :count).by(1)
 
       assert_redirected_to event_path(assigns(:event))
     end
 
-    should "have an edit event page for their own events" do
+    it "edits event page for their own events" do
       event = create(:event, creator: @user)
       get :edit, id: event.to_param
 
@@ -51,21 +51,21 @@ class EventsControllerTest < ActionController::TestCase
       assert_equal event, assigns(:event)
     end
 
-    should "not have an edit event page for other events" do
+    it "does not have an edit event page for other events" do
       event = create(:event, created_by: 999)
       get :edit, id: event.to_param
 
       assert_redirected_to root_path
     end
 
-    should "be able to update their own events" do
+    it "updates their own events" do
       event = create(:event, creator: @user)
       patch :update, id: event.to_param, event: { description: "hi" }
 
       assert_equal "hi", event.reload.description
     end
 
-    should "not update other events" do
+    it "does not update other events" do
       event = create(:event, created_by: 999, description: "no")
       patch :update, id: event.to_param, event: { description: "hi" }
 

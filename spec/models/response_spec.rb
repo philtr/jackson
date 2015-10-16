@@ -1,11 +1,11 @@
-require "test_helper"
+require "rails_helper"
 
-class ResponseTest < ActiveSupport::TestCase
-  should belong_to(:event)
-  should belong_to(:user)
+describe Response do
+  it { should belong_to(:event) }
+  it { should belong_to(:user) }
 
   context "The Response class" do
-    should "list responses for upcoming events" do
+    it "lists responses for upcoming events" do
       upcoming_event    = create(:event, starts_at: 1.day.from_now)
       upcoming_response = create(:response, event_id: upcoming_event.id)
       past_event        = create(:event, starts_at: 1.day.ago)
@@ -17,7 +17,7 @@ class ResponseTest < ActiveSupport::TestCase
   end
 
   context "A response" do
-    should "set additional guests to 0 if a negative number is provided" do
+    it "sets additional guests to 0 if a negative number is provided" do
       response = build(:response, additional_guests: -95)
       response.valid?
 

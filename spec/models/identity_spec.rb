@@ -1,8 +1,8 @@
-require 'test_helper'
+require 'rails_helper'
 
-class IdentityTest < ActiveSupport::TestCase
+describe Identity do
   context "The Identity class" do
-    should "authorize from an auth object" do
+    it "authorizes from an auth object" do
       auth = Auth.new({ provider:    'identity_test',
                         uid:         '1234',
                         info:        { name:   'Test Identity', email:  'testuser@h4q.me' },
