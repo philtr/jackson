@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   include EventParams
 
-  before_filter :require_authentication, except: [ :show ]
+  before_action :require_authentication, except: [ :show ]
 
   def new
     page_title "New Event"

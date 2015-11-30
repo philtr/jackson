@@ -1,5 +1,5 @@
 class ResponsesController < ApplicationController
-  before_filter :require_authentication
+  before_action :require_authentication
 
   def index
     @event = Event.find(params[:event_id])

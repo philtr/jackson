@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token, only: :create
   # GET /sign-in
   def new
     page_title "Sign in"

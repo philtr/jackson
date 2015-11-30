@@ -1,5 +1,5 @@
 class BaseController < ApplicationController
-  before_filter :require_signed_out
+  before_action :require_signed_out
 
   def home
     page_title "Home"

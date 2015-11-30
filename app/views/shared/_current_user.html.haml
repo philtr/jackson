@@ -5,7 +5,7 @@
       &nbsp;
       = current_user.full_name
   %li= link_to "Sign Out", sign_out_path
-- else
+-# - else
   %li.dropdown
     %a.dropdown-toggle{ href: "#", data: { toggle: "dropdown" } }
       Sign In

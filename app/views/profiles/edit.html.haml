@@ -17,11 +17,11 @@
 
   = f.submit "Update Profile", class: "btn btn-primary"
 
-%hr
+-# %hr
 
-%h3 Connect your other accounts
+-# %h3 Connect your other accounts
 
-.btn-group
+-# .btn-group
   = link_to auth_path(:github), class: "btn btn-default #{ "disabled" if current_user.provider?("github") }" do
     %span.icon-githubj
     GitHub

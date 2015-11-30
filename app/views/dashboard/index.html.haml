@@ -1,24 +1,29 @@
-- cache [ "v1", current_user, @events, @upcoming_events ] do
-  .pull-right
-    = link_to  new_event_path, class: "btn btn-success" do
-      <strong>+</strong>  Create an Event
+.row
+  - cache [ "v1", current_user, @events, @upcoming_events ] do
+    .col-md-9
+      %h3 My Upcoming Events
+      - if @upcoming_events.any?
+        = render @upcoming_events.sort_by(&:starts_at)
+      - else
+        .well{ style: "text-align: center" }
+          %h1
+            .icon-calendar
+          %h3 You don't have any upcoming events.
+          %p
+            = link_to "Create an event", new_event_path
+            yourself, or, if you're looking for something to do,
+            check out #{ link_to "Ruby FTW", "http://rubyftw.org" }.
 
-  .page-header
-    %h3 My Upcoming Events
-  - if @upcoming_events.any?
-    = render @upcoming_events.sort_by(&:starts_at)
-  - else
-    .well{ style: "text-align: center" }
-      %h1
-        .icon-calendar
-      %h3 You don't have any upcoming events.
-      %p
-        = link_to "Create an event", new_event_path
-        yourself, or, if you're looking for something to do,
-        check out #{ link_to "Ruby FTW", "http://rubyftw.org" }.
+      -# - if @past_events.any?
+        .page-header
+          %h3 Past Events
+        = render @past_events.sort_by(&:starts_at).reverse
 
-  - if @past_events.any?
-    .page-header
-      %h3 Past Events
-    = render @past_events.sort_by(&:starts_at).reverse
+  .col-md-3
+    %h4 Stuff you might want to do
+
+    %ul.nav.nav-stacked.nav-pills
+      %li= link_to "Create an Event", new_event_path
+      %li= link_to "My Past Events", "#"
+
 

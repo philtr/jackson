@@ -7,6 +7,7 @@
 
 html.turbolinks-progress-bar::before {
   background-color: $brand-success !important;
+  background-color: red !important;
   height: 3px !important;
 }
 
@@ -27,6 +28,7 @@ footer {
 
     &.old {
       color: $gray-light;
+      color: #ddd;
     }
   }
 }
