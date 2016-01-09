@@ -3,10 +3,6 @@ ENV["RAILS_ENV"] ||= "test"
 
 require "simplecov"
 
-SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
-  SimpleCov::Formatter::HTMLFormatter,
-]
-
 SimpleCov.start("rails") do
   add_group "Services", "app/services"
 end
