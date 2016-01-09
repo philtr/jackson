@@ -18,10 +18,8 @@ class User < ActiveRecord::Base
     self.last_name = names.join(" ")
   end
 
-  def gravatar(size = 500)
-    "http://www.gravatar.com/avatar/#{ Digest::MD5.hexdigest(email.downcase) }?s=#{ size }&d=retro"
-  rescue
-    avatar_url.presence || random_avatar
+  def avatar(size: 512)
+    Avatar.new(self, size: size)
   end
 
   def providers
@@ -31,16 +29,4 @@ class User < ActiveRecord::Base
   def provider?(provider_name)
     providers.include?(provider_name)
   end
-
-  protected
-
-  def random_avatar(size = 500)
-    [
-      "http://placekitten.com/#{ size }/#{ size }",
-      "http://www.avatarpro.biz/avatar?s=#{ size }",
-      "http://placedog.com/#{ size }/#{ size }",
-      "http://lorempixel.com/#{ size }/#{ size }",
-    ].sample
-  end
-
 end

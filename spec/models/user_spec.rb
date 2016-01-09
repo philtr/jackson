@@ -29,30 +29,8 @@ describe User do
       assert_equal true, user.provider?("test2")
     end
 
-    it "has a gravatar" do
-      assert_match(/^http:\/\/www.gravatar.com/i, user.gravatar)
-    end
-
-    context "without an email address" do
-      it "uses a specified avatar if present" do
-        user.email = nil
-        user.avatar_url = "http://google.com"
-
-        assert_equal "http://google.com", user.gravatar
-      end
-
-      it "uses a random avatar if none specified" do
-        allow_any_instance_of(User).to receive(:random_avatar).and_return(nil)
-        user.email = nil
-        user.avatar_url = nil
-
-        user.gravatar
-      end
-
-      it "has a random avatar generator" do
-        avatar_url = user.send(:random_avatar)
-        assert_match(/https?:\/\/.*/, avatar_url)
-      end
+    it "has an avatar" do
+      expect(user.avatar).to be_an(Avatar)
     end
   end
 end

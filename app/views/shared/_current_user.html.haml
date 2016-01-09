@@ -1,7 +1,8 @@
 - if current_user?
   %li
     = link_to edit_profile_path do
-      = image_tag current_user.gravatar, width: 20, style: "position: relative; top: -1px; border-radius: 20px;"
+      = image_tag current_user.avatar, width: 20,
+        style: "position: relative; top: -1px; border-radius: 20px;"
       &nbsp;
       = current_user.full_name
   %li= link_to "Sign Out", sign_out_path
