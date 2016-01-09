@@ -30,7 +30,7 @@ gem "unicorn"
 group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
-  gem "coveralls", require: false
+  gem "simplecov"
   gem "dotenv-rails"
   gem "shoulda-matchers", "~> 3.0"
   gem "mailcatcher", github: "sj26/mailcatcher"
