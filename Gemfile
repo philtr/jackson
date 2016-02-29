@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-ruby "2.2.3"
+ruby "2.3.0"
 
-gem "rails", "4.2.4"
+gem "rails", "4.2.5.2"
 
 gem "pg"
 
@@ -33,7 +33,6 @@ group :development, :test do
   gem "simplecov"
   gem "dotenv-rails"
   gem "shoulda-matchers", "~> 3.0"
-  gem "mailcatcher", github: "sj26/mailcatcher"
   gem "factory_girl_rails"
   gem "pry-rails"
   gem "rspec-rails"
